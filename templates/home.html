@@ -1,0 +1,101 @@
+<!-- {% load static %} -->
+<!-- {% static "images" as baseUrl %} -->
+<!DOCTYPE html>
+<html lang="en" style="scroll-behavior: smooth;">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="style.css" type="text/css" rel="stylesheet">
+
+
+
+
+</head>
+
+<body>
+
+    <header class="bg-info pt-3" style="position: fixed; width: 100%; z-index: 100;height:80px;">
+
+        <div class="bg row text-white">
+            <div class="col-md-6 pl-5">
+
+                <h2>Home Page</h2>
+
+            </div>
+            <div class="col-md-6 my-auto">
+
+                <a style="font-size:1.2rem; text-align:right;" class="nav-link text-white pr-5" action="logout"
+                    href="{% url 'logout'%}">Logout</a>
+                <span id="error3"></span>
+            </div>
+
+
+    </header>
+    <section class="bg-dark" id="home-section" style="padding-top:8em; height: 600px;">
+        <div class="row">
+            <div class="container">
+
+                <div class="row align-items-center">
+
+                    <div class="col-md-6">
+                        <!-- <video controls loop autoplay src="https://ak.picdn.net/shutterstock/videos/24707117/preview/stock-footage-business-man-pointing-on-web-development-concept-tablet-pad.webm"></video> -->
+                        <img src="https://www.touchmediaads.com/myimg/b1.3.gif" style="height:350px; width: 500px;">
+                    </div>
+                    <div class="col-md-6 text-white pl-5">
+                        <p style="font-size: 1.4rem;">You are in Home page now</p>
+
+                        </form>
+                    </div>
+    </section>
+
+    <section class="bg-dark">
+        <div class="container">
+            <div class="row">
+
+
+                {% for list1 in list1 %}
+                <!-- <div class="row align-items-center"> -->
+
+                <!-- <div class="col-md-3 ml-0"> -->
+
+                    <div class="card col-md-3 p-2 ml-5" style="width:100%;margin-left:1px">
+                        <img class="card-img-top" src="{{list1.img}}" alt="Card image cap">
+                        
+                        <div class="card-body">
+                            <h5 class="card-title text-center">{{list1.name}}</h5>
+                            <p class="card-text text-center">{{list1.desc}}</p>
+                            <p class="card-text text-center">Rs.{{list1.price}}</p>
+                            <div class="text-center pt-4">
+                            <a href="#" class="btn btn-primary">Add to cart</a>
+                        </div>
+                        </div>
+                        
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+           
+        </div>
+        <br><br><br><br>
+    </section>
+
+    <section>
+        <footer style="height: 80px;" class="col-md-12 bg-info">
+            <div class="container">
+                <div class="col-md-12 text-center text-white mt-20">
+                        
+                    <p class="p-2">Copyright</p>
+                </div>
+            </div>
+
+        </footer>
+    </section>
+
+</body>
+
+</html>

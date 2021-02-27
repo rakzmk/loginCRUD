@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en" style="scroll-behavior: smooth;">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loginpage</title>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- <link href="style.css" type="text/css" rel="stylesheet"> -->
+
+    <!-- <link rel="preconnect" href="https://fonts.gstatic.com"> -->
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,300;0,400;0,600;0,700;1,800&display=swap"
+        rel="stylesheet"> -->
+
+
+
+</head>
+
+<body>
+
+    <header class="bg-info mt-12" style="position: fixed; width: 100%; z-index: 100;">
+
+        <div class="row text-white">
+            <div class="col-md-6 col-9 p-3 pl-5">
+
+                <h2>Admin User Edit</h2>
+
+            </div>
+            <div class="col-md-6 my-auto">
+                <!-- <nav class="navbar navbar-expand-lg navbar">
+                    <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse"
+                        data-target=".navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbar-collapse">
+                        <ul class="navbar-nav ml-auto">
+                        </ul>
+                    </div>
+                </nav> -->
+            </div>
+        </div>
+    </header>
+
+    <section class="bg-dark" id="home-section" style="padding-top:6em; height:650px;">
+        <div class="row">
+            <div class="container">
+
+                <div class="col-md-6 text-white pl-5 row align-items-center">
+
+                    <p style="font-size: 1.2rem;color:rgb(250, 233, 0);">{{us.id}}</p>
+                </div> 
+
+                    <div class="form-group col-md-6 text-white">
+                        <form id="submit-form">
+                            <!-- <form id="submit-form" method="POST"> -->
+
+                            <!-- {% csrf_token %} -->    
+                            <label name="username" for="usname">Name</label>
+                            <input type="text" class="form-control" name="name1a" id="name1" value="{{user.first_name}}" placeholder="First Name">
+
+                            <!-- <label name="last name" for="lasname">Last Name</label>
+                            <input type="text" class="form-control" name="lname1a" id="lname1" placeholder="Last Name"> -->
+
+                            <label name="last name" class= "mt-3" for="email">Email</label>
+                            <input type="text" class="form-control" name="email1a" id="email1" value="{{user.email}}" placeholder="Email Name">
+
+                            <label name="last name" class= "mt-3" for="username">User name</label>
+                            <input type="text" class="form-control" name="username1a" id="username1" value="{{user.username}}" placeholder="User Name">
+
+
+                            <!-- <label for="inputPassword">Password</label>
+                            <input type="password" class="form-control" name="pwd1a" id="pwd1"
+                                placeholder="Password">
+
+
+                            <label for="inputPassword">Confirm Password</label>
+                            <input type="password" class="form-control" name="cpwd1a" id="cpwd1"
+                                placeholder="Password"> -->
+                                <div class="mt-3">
+                                    <span style="font-size:1rem;color:rgb(250,233, 0);" id="error1"></span>
+                                </div>
+                            
+
+
+                            <button id="but1" type="button" class="btn btn-primary text-center mt-5"
+                                style="width:30%;">Edit User</button>
+
+                            <a class="btn btn-primary btn-xs mt-5 ml-3"  style="width:30%;" href="{% url 'adminhome' %}">Cancel</a></button>  
+                        </form>
+                        
+                         
+                                
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+    <section>
+        <footer class="bg-info ml-auto">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 text-center text-white mt-20">
+
+                        <p class="p-2">Copyright</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </section>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script> 
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+    <script>
+        $('#but1').click(function () {
+            var name2 = $('#name1').val()
+            var email2 = $('#email1').val()
+            var username2 = $('#username1').val()
+            var pwd2 = $('#pwd1').val()
+            var cpwd2 = $('#cpwd1').val()
+            var userlen = $('#username1').val().length
+            var namelen = $('#name1').val().length
+            //var pwdlen = $('#pwd1').val().length
+            var atposition=email2.indexOf("@") 
+            var dotposition=email2.lastIndexOf(".")
+            var data = {
+                'csrfmiddlewaretoken': '{{csrf_token}}',
+                'name3': name2,
+                'email3': email2,
+                'username3': username2,
+                'pwd3': pwd2,
+                'cpwd3': cpwd2,
+            }
+            if (namelen <= 3 || namelen >= 11 ) {
+                $('#error1').html("Please enter First name min 4 and max 10 characters")
+            }
+            else if (email2 === "") {
+                $('#error1').html("Please enter valid email")
+
+            }
+            else if (atposition<1 || dotposition<atposition+2 || dotposition+2>=email2.length){ 
+                             
+                $('#error1').html("Please enter a valid e-mail address using @ . formats")
+                //alert("Please enter a valid e-mail address \n atpostion:"+atposition+"\n dotposition:"+dotposition) 
+                //alert("Please enter a valid e-mail address \n with @:"+atposition+"\n .co format:"+dotposition)  
+                  
+            }
+            else if (userlen <= 3 || userlen >= 11 ) {
+                $('#error1').html("Please enter Username with min 4 and max 10 characters")
+            }
+            //else if (pwdlen <= 3 || pwdlen >= 11 ) {
+               // $('#error1').html("Please enter a password min 4 and max 10 characters")
+           // }
+           // else if (cpwd2 === "") {
+                //$('#error1').html("Please enter a confirm password")
+
+            //}
+            //else if (pwd2 !== cpwd2) {
+               // $('#error1').html("Password must be same")
+                
+           // }
+            
+
+            
+            else {
+                $.ajax({
+                    url: '/admin1/update/{{user.id}}',
+                    method: 'POST',
+                    data: data,
+                    datatype: 'json',
+                    success: function (data) {
+                        if (data == 'true') {
+                            window.location.replace('/admin1/adminhome/')
+                        }
+                        else if(data == 'false') {
+                            //window.location.replace('/register/'),
+                            $('#error1').html("Username already taken")
+                            //alert("Username already taken")
+                            
+                        }
+                        else if(data == 'false1') {
+                            //window.location.replace('/register/'),
+                            $('#error1').html("Email already taken")
+                            //alert("Email already taken")
+                            
+                        }
+                    }
+                })
+            }
+        })
+    </script>
+
+
+
+
+</body>
+
+</html>

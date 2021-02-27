@@ -1,0 +1,345 @@
+{% load static %}
+{% static "images" as baseUrl %}
+<!DOCTYPE html>
+<html lang="en" style="scroll-behavior: smooth;">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+
+    <!-- <link href="style.css" type="text/css" rel="stylesheet"> -->
+
+
+
+
+
+
+
+</head>
+
+<body>
+
+    <header class="bg-info pt-3" style="position: fixed; width: 100%; z-index: 100;height:80px;">
+
+        <div class="bg row text-white">
+            <div class="col-md-6 pl-5">
+
+                <h2>Admin Home Page</h2>
+
+            </div>
+            <div class="col-md-6 my-auto">
+
+                <a style="font-size:1.2rem; text-align:right;" class="nav-link text-white pr-5" action="logout"
+                    href="{% url 'adlogout' %}">Logout</a>
+                <span id="error3"></span>
+            </div>
+
+
+    </header>
+    <section>
+        <div class="container">
+            <div class="col-md-12 text-white pl-5">
+                <p style="font-size: 1.4rem;">You are in Admin page now</p>
+
+            </div>
+        </div>
+    </section>
+    <section class="bg-dark" id="home-section" style="padding-top:8em;">
+        <div class="container">
+            <div class="row">
+                <div class="row col-md-12 col-md-offset-2 custyle">
+                    <table class="table table-striped custab">
+                        <form action="">
+                            <input name="q" type="text" style="width: 30%;border-radius: 4px;" placeholder ="Search" >
+                            <button style= "font-size:1.2rem;" class="btn btn-primary btn-lg">search</button>
+                        </form>
+                        <div class="ml-5">
+                            <button type="button" class="btn btn-primary btn-lg" style="font-size:1.1rem;" data-toggle="modal" data-target="#exampleModal">
+                                Add User
+                            </button>
+                        </div>
+                        <!-- <a href="#" class="btn btn-primary btn-xs pull-right"><b>+</b> Add new categories</a> -->
+                        <tr>
+                            <thead>
+
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Email ID</th>
+                                <th>User name</th>
+
+                                <th class="text-center">Action</th>
+                            </thead>
+                        </tr>
+
+                        {% for us in users %}
+                        <tr>
+                            <td>{{us.id}}</td>
+                            <td>{{us.first_name}}</td>
+                            <td>{{us.email}}</td>
+                            <td>{{us.username}}</td>
+
+
+                            <td class="text-center">
+
+
+                                <a href="{% url 'updatedata' us.id %}" class="btn btn-warning btn-xs">Edit</a>
+
+
+
+                                <form action="{% url 'deletedata' us.id %}" onclick="myFunction()" method="POST" class="d-inline">{% csrf_token %}
+
+                                    <input type="submit" value="Delete" class="btn btn-danger btn-xs">
+                                </form>
+                            </td>
+                        </tr>
+
+                        {% endfor %}
+                        
+                    </table>
+
+    </section>
+    <script>
+        function myFunction() {
+          confirm("Please confirm Delete");
+        }
+        </script>
+        
+    <section>
+        <!-- Button trigger modal -->
+
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Add User</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <section class="bg-dark" id="home-section">
+                            <div class="row">
+                                <div class="container">
+
+
+                                    <div class="form-group col-md-12 text-white">
+                                        <form id="submit-form">
+                                            <!-- <form id="submit-form" method="POST"> -->
+
+                                            <!-- {% csrf_token %} -->
+                                            <label name="username" for="usname">Name</label>
+                                            <input type="text" class="form-control" name="name1a" id="name1" value=""
+                                                placeholder="First Name">
+
+                                            <!-- <label name="last name" for="lasname">Last Name</label>
+                                                                <input type="text" class="form-control" name="lname1a" id="lname1" placeholder="Last Name"> -->
+
+                                            <label name="last name" for="email">Email</label>
+                                            <input type="text" class="form-control" name="email1a" id="email1" value=""
+                                                placeholder="Email Name">
+
+                                            <label name="last name" for="username">User name</label>
+                                            <input type="text" class="form-control" name="username1a" id="username1"
+                                                value="" placeholder="User Name">
+
+
+                                            <label for="inputPassword">Password</label>
+                                            <input type="password" class="form-control" name="pwd1a" id="pwd1"
+                                                placeholder="Password">
+
+
+                                            <label for="inputPassword">Confirm Password</label>
+                                            <input type="password" class="form-control" name="cpwd1a" id="cpwd1"
+                                                placeholder="Password">
+
+                                            <span style="font-size:1rem;color:rgb(250,233, 0); padding: top 10px;"
+                                                id="error1"></span>
+
+
+                                            <div>
+                                                <button type="button" class="btn btn-secondary mt-5 ml-3"
+                                                    style="width:30%;" data-dismiss="modal">Close</button>
+                                                <button id="but1" type="button"
+                                                    class="btn btn-primary text-center align-left mt-5 ml-3"
+                                                    style="width:30%;">Add User</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+
+                            </div>
+                    </div>
+
+
+                </div>
+                <div class="modal-footer">
+                    <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+                    <!-- <button id="but2" type="button" class="btn btn-primary">register</button> -->
+                </div>
+
+            </div>
+        </div>
+
+
+
+    </section>
+
+
+
+
+
+
+    <!-- <a href="{% url 'adduser' %}" class="btn btn-warning btn-sm">Add User</a>
+    </div>
+    </div>
+    </div>
+    </div>
+
+    </section> -->
+
+
+
+
+<section>
+        <footer style="height: 80px;" class="col-md-12 bg-info">
+            <div class="container">
+                <div class="col-md-12 text-center text-white mt-20">
+
+                    <p class="p-2">Copyright</p>
+                </div>
+            </div>
+
+        </footer>
+</section>
+<style>
+        .custab {
+            border: 1px solid #ccc;
+            padding: 5px;
+            margin: 5% 0;
+            box-shadow: 3px 3px 2px #ccc;
+            transition: 0.5s;
+            background-color: rgba(241, 241, 227, 0.658);
+        }
+
+        .custab:hover {
+            box-shadow: 3px 3px 0px transparent;
+            transition: 0.5s;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+        integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
+        crossorigin="anonymous"></script>
+    <script>
+        $('#but1').click(function () {
+            var name2 = $('#name1').val()
+            var email2 = $('#email1').val()
+            var username2 = $('#username1').val()
+            var pwd2 = $('#pwd1').val()
+            var cpwd2 = $('#cpwd1').val()
+            var userlen = $('#username1').val().length
+            var namelen = $('#name1').val().length
+            var pwdlen = $('#pwd1').val().length
+            var atposition=email2.indexOf("@") 
+            var dotposition=email2.lastIndexOf(".")
+            var data = {
+                'csrfmiddlewaretoken': '{{csrf_token}}',
+                'name3': name2,
+                'email3': email2,
+                'username3': username2,
+                'pwd3': pwd2,
+                'cpwd3': cpwd2,
+            }
+            if (namelen <= 3 || namelen >= 11 ) {
+                $('#error1').html("Please enter First name min 4 and max 10 characters")
+            }
+            else if (email2 === "") {
+                $('#error1').html("Please enter valid email")
+
+            }
+            else if (atposition<1 || dotposition<atposition+2 || dotposition+2>=email2.length){ 
+                             
+                $('#error1').html("Please enter a valid e-mail address using @ . formats")
+                //alert("Please enter a valid e-mail address \n atpostion:"+atposition+"\n dotposition:"+dotposition) 
+                //alert("Please enter a valid e-mail address \n with @:"+atposition+"\n .co format:"+dotposition)
+                
+                  
+            }
+            else if (userlen <= 3 || userlen >= 11 ) {
+                $('#error1').html("Please enter Username min 4 and max 10 characters")
+            }
+            else if (pwdlen <= 3 || pwdlen >= 11 ) {
+                $('#error1').html("Please enter a password min 4 and max 10 characters")
+            }
+            else if (cpwd2 === "") {
+                $('#error1').html("Please enter a confirm password")
+
+            }
+            else if (pwd2 !== cpwd2) {
+                $('#error1').html("Password must be same")
+                
+            }
+            
+
+            else {
+                $.ajax({
+                    url: '/admin1/adminadd/',
+                    method: 'POST',
+                    data: data,
+                    datatype: 'json',
+                    success: function (data) {
+                        if (data == 'true') {
+                            alert("Successfully created account"),
+                            window.location.replace('/admin1/adminhome/')
+                        }
+                        else if (data == 'false') {
+                            //window.location.replace('/register/'),
+                            $('#error1').html("Username already taken")
+                            //alert("Username already taken")
+
+                        }
+                        else if (data == 'false1') {
+                            //window.location.replace('/register/'),
+                            $('#error1').html("Email already taken")
+                            //alert("Username already taken")
+
+                        }
+
+                    }
+                })
+            }
+        })
+    </script>
+
+
+
+</body>
+
+</html>
